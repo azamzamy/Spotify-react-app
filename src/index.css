@@ -1,5 +1,117 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: helvetica neue,helvetica;
+  font-size: 14px;
+  margin-left: 200px;
+  background-color: rgba(0,0,0,0.9);
 }
+
+h1{
+  color: white;
+  font-size: 3rem;
+  line-height: 1.4;
+  font-family: Helvetica neue, Helvetica;
+  font-weight: 700;
+  margin: 30px 0px 40px 30px;
+}
+
+
+.navigator{
+  display: block;
+  width: 200px;
+  height: 100%;
+  opacity: 1;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.spotify-logo{
+  width: 100%;
+  padding: 15% 15% 15% 15%;
+  margin-bottom: 11%;
+}
+.nav-buttons{
+    list-style-type: none;
+    padding-left: 19%;
+}
+
+.nav-buttons li a{
+
+}
+
+.nav-buttons a{
+  font-weight: 700;
+  padding-bottom: 3px;
+  width: 100%;
+  line-height: 1.6;
+  list-style: none;
+  color: rgb(63%, 63%, 63%);
+  display: block;
+  font-size: 15px;
+
+}
+
+.nav-buttons a:hover{
+  color: white;
+  text-decoration: none;
+}
+.user{
+  position: absolute;
+  color: white;
+  font-family: Helvetica Neue;
+  font-size: 18px;
+  font-weight: 300;
+  padding-left: 16%;
+  bottom: 0px;
+  padding-bottom: 10%;
+  width: 100%;
+}
+
+.user a:hover{
+  color: aqua;
+  text-decoration: none;
+}
+
+.padding--right {
+  padding-right: 5%;
+}
+
+.artist-box{
+  width: 20%;
+  height: 10%;
+}
+
+.artist-image{
+  height: 90%;
+  width: 100%;
+  background-color: yellow;
+}
+
+.artist-title{
+  width: 100%;
+  height: 10%;
+  background-color: green;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

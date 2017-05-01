@@ -9,7 +9,7 @@ export default class Albums extends React.Component {
 
   	return (
             <div>
-              <h1>Spotify App Yow ALBUMS</h1>
+              <h1>Spotify App ALBUMS</h1>
             </div>
 
             );

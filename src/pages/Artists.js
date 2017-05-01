@@ -9,7 +9,7 @@ export default class Artists extends React.Component {
 
   	return(
             <div>
-              <h1>Spotify App Yow ARTISTS</h1>
+              <h1>Spotify App ARTISTS</h1>
             </div>
 
             );

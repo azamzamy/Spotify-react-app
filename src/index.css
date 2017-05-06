@@ -96,9 +96,73 @@ h1{
   background-color: green;
 }
 
+.search-bar{
+  border-radius: 20px;
+  width:23%;
+  height: 40px;
+  margin-left: 3%;
+  outline: none;
+  padding-left: 1%;
+}
+.button{
+  background-color: #2ebd59;
+  border-radius: 30px;
+  color: white;
+  margin-left: 10%;
+  width: 80%;
+   height: 40px;
 
+}
 
+.button :hover{
+  background-color: #219042;
+  
+}
+.leftSide{
+  float: left;
+  margin-left: 5%;
+  margin-top: 3%;
+}
+.ablum-title{
+  text-align: center;
+  color: white;
+  margin: 0%;
+  padding: 0%;
+  padding-bottom: 2%;
 
+}
+.track-title{
+   padding-bottom: 5%;
+}
+.artist-txt{
+  text-align: center;
+  color: grey;
+  padding: 0%;
+  margin: 0%;
+  padding-bottom: 2%;
+}
+.right-side{
+  margin-left: 5%;
+  margin-top: 3%;
+  float: left;
+}
+.col_duration{
+  padding-left:10px;
+}
+.col_name{
+  padding-left:10px;
+  padding-right: 50px;
+}
+.clear{
+  clear: both;
+}
+.row{
+  margin-bottom: 5%;
+}
+
+.row :hover {
+  background-color: white;
+}
 
 
 

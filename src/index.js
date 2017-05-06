@@ -23,8 +23,8 @@ class App extends React.Component{
             <Route path="albums" component={Albums}></Route>
             <Route path="artists" component={Artists}></Route>
             <Route path="home" component={Home}></Route>
-            <Route path="singleartist" component={SingleArtist}></Route>
-            <Route path="singlealbum" component={SingleAlbum}></Route>
+            <Route path="singleartist/:artistID" component={SingleArtist}></Route>
+            <Route path="singlealbum/:albumID" component={SingleAlbum}></Route>
 
           </Route>
         </Router>
@@ -36,5 +36,3 @@ class App extends React.Component{
 }
 
 ReactDOM.render(<App></App>, document.getElementById('root'));
-
-

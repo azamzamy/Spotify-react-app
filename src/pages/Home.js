@@ -28,7 +28,7 @@ export default class Home extends React.Component {
 		}
 		  		console.log("CONSTRUCTOR");
 	}
-  	
+
   	componentWillMount(){
   		console.log("hommeeeeee");
 
@@ -53,12 +53,12 @@ export default class Home extends React.Component {
 					itemsName.push(this.state.items[i].name);
 					console.log("#######!       " + i);
 					console.log(this.state.items[i].images[2].url);
-				} 
+				}
 
 			}
 			console.log(imgAr);
 		});
-	
+
 	}
 
   	render() {
@@ -66,15 +66,15 @@ export default class Home extends React.Component {
   		return (
             <div>
               <h1>Top Artists</h1>
-              	{imgAr.map((img,i)=> 
+              	{imgAr.map((img,i)=>
 	              		<li key={i}>
-	              			<Link to="albums"> 
+	              			<Link to="albums">
 	              				<img src={""+img}/>
 	              			</Link>
 	              			<p>{itemsName[i]}</p>
 	              		</li>
               	)}
-              	
+
             </div>
 
         );

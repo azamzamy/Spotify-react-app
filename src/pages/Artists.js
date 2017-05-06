@@ -11,6 +11,7 @@ let params = {
 };
 var imgAr = [];
 var itemsName = [];
+var artistIds = [];
 export default class Artists extends React.Component {
 
 
@@ -20,7 +21,8 @@ export default class Artists extends React.Component {
 		this.state = {
 			items: [],
 			imgArray:[],
-			itemsName : []
+			itemsName : [],
+            artistIds : []
 		}
 
 
@@ -29,6 +31,7 @@ export default class Artists extends React.Component {
 		event.preventDefault();
 		imgAr = [];
 		itemsName = [];
+        artistIds = [];
 		let artist_name = this.refs.artist_txt.value;
 		let keyword = artist_name;
 		params.q = keyword;
@@ -38,21 +41,23 @@ export default class Artists extends React.Component {
 
 			for (var i = 0; i <20; i++) {
 
+                artistIds.push(response.data.artists.items[i].id);
 				var imgURL = this.state.items[i].images.length;
 				if(imgURL > 2){
 					imgAr.push(this.state.items[i].images[2].url);
-					itemsName.push(this.state.items[i].name);
+					itemsName.push(this.state.items[i].name)
 
-					
-				} 
+				}
 
 			}
 			this.setState({imgArray:imgAr});
 			this.setState({itemsName:itemsName});
+            this.setState({artistIds:artistIds});
+            console.log("Response fetched");
 		});
-		console.log("ON CLICK ########");
-		console.log("ON CLICK ########" + this.state.imgArray);
-		console.log("ON CLICK ########" + this.state.itemsName);
+		// console.log("ON CLICK ########");
+		// console.log("ON CLICK ########" + this.state.imgArray);
+		// console.log("ON CLICK ########" + this.state.itemsName);
 	}
   render() {
 
@@ -62,9 +67,9 @@ export default class Artists extends React.Component {
 	              <form onSubmit={this.searchAlbum}>
 	              <input ref="artist_txt" placeholder="Search for Artists"/>
 	              </form>
-	              {this.state.imgArray.map((img,i)=> 
+	              {this.state.imgArray.map((img,i)=>
 	              		<li key={i}>
-	              			<Link to="home"> 
+	              			<Link to={"singleartist/" + this.state.artistIds[i]}>
 	              				<img src={""+img}/>
 	              			</Link>
 	              			<p>{this.state.itemsName[i]}</p>

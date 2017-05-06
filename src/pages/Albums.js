@@ -11,6 +11,7 @@ let params = {
 };
 var imgAr = [];
 var itemsName = [];
+var albumsId=[];
 export default class Albums extends React.Component {
 
 	constructor(){
@@ -19,7 +20,7 @@ export default class Albums extends React.Component {
 		this.state = {
 			items: [],
 			imgArray:[],
-			itemsName:[]
+			itemsName:[],
 		}
 	}
 	searchAlbum (event){
@@ -38,14 +39,18 @@ export default class Albums extends React.Component {
 				if(imgURL > 2){
 					imgAr.push(this.state.items[i].images[2].url);
 					itemsName.push(this.state.items[i].name);
+					albumsId.push(this.state.items[i].id);
 				} 
 
 			}
 			this.setState({imgArray:imgAr});
 			this.setState({itemsName:itemsName});
+
 		});
 	}
   	render() {
+
+  		
 
 	  	return (
 	            <div>
@@ -55,7 +60,7 @@ export default class Albums extends React.Component {
 	              </form>
 	              {this.state.imgArray.map((img,i)=> 
 	              		<li key={i}>
-	              			<Link to="singlealbum"> 
+	              			<Link to= {"singlealbum/"+albumsId[i]}> 
 	              				<img src={""+img}/>
 	              			</Link>
 	              			<p>{this.state.itemsName[i]}</p>

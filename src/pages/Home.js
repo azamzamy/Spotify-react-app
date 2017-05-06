@@ -7,7 +7,8 @@ import SingleArtist from './SingleArtist.js';
 // import Nav from "../components/layout/Nav";
 
 const API_URL = 'https://api.spotify.com/v1/search';
-
+var imgAr = [];
+var itemsName = [];
 let params = {
     q: '',
 	type: 'artist',
@@ -17,11 +18,13 @@ export default class Home extends React.Component {
   	constructor(props) {
 		super(props);
 		// this.load = this.load.bind(this)
+
 		this.state = {
 			artists: [{}],
 			items: [],
 			name: "",
-			url :""
+			url :"",
+			images : []
 		}
 		  		console.log("CONSTRUCTOR");
 	}
@@ -29,7 +32,7 @@ export default class Home extends React.Component {
   	componentWillMount(){
   		console.log("hommeeeeee");
 
-		let keyword = "lil wayne";
+		let keyword = "q";
 		params.q = keyword;
 		axios.get(API_URL, {params: params}).then(response => {
 
@@ -40,10 +43,22 @@ export default class Home extends React.Component {
 			console.log("@@@@@@@@@@@@@@");
 			console.log("response")
 			console.log(this.state.artists);
-			// console.log(this.state.artists.items[0].name);
-			// console.log("###" + response.data.artists.items[0].name);
 			console.log("@@@@@@@@@@@@@@");
+
+			for (var i = 0; i <20; i++) {
+
+				var imgURL = this.state.items[i].images.length;
+				if(imgURL > 2){
+					imgAr.push(this.state.items[i].images[2].url);
+					itemsName.push(this.state.items[i].name);
+					console.log("#######!       " + i);
+					console.log(this.state.items[i].images[2].url);
+				} 
+
+			}
+			console.log(imgAr);
 		});
+	
 	}
 
   	render() {
@@ -51,7 +66,15 @@ export default class Home extends React.Component {
   		return (
             <div>
               <h1>Top Artists</h1>
-              <SingleArtist art= {this.state.artists} items={this.state.items} name={this.state.name} url={this.state.url}></SingleArtist>
+              	{imgAr.map((img,i)=> 
+	              		<li key={i}>
+	              			<Link to="albums"> 
+	              				<img src={""+img}/>
+	              			</Link>
+	              			<p>{itemsName[i]}</p>
+	              		</li>
+              	)}
+              	
             </div>
 
         );

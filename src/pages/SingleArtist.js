@@ -27,8 +27,10 @@ export default class SingleArtist extends React.Component {
             <h2>Artist</h2>
             <ul>
                 <li> 
-                  <img src= {url}/> 
-                 <h6 className= "artist-image">{name}</h6>
+                  <Link to="albums"> 
+                   <img src= {url}/> 
+                  </Link>
+                  <h6 className= "artist-image">{name}</h6>
                 </li>
             </ul>
             </div>

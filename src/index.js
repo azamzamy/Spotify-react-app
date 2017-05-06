@@ -9,7 +9,8 @@ import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Albums from "./pages/Albums";
 import Artists from "./pages/Artists";
-
+import SingleArtist from "./pages/SingleArtist";
+import SingleAlbum from "./pages/SingleAlbum";
 
 class App extends React.Component{
 
@@ -22,6 +23,9 @@ class App extends React.Component{
             <Route path="albums" component={Albums}></Route>
             <Route path="artists" component={Artists}></Route>
             <Route path="home" component={Home}></Route>
+            <Route path="singleartist" component={SingleArtist}></Route>
+            <Route path="singlealbum" component={SingleAlbum}></Route>
+
           </Route>
         </Router>
 

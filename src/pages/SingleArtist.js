@@ -101,7 +101,7 @@ export default class SingleArtist extends React.Component {
 
 
     return (
-            <div >
+            <div className="body-container">
                 <h5> {this.state.artistFollowers} Followers </h5>
                 <h2>{this.state.artistName}</h2>
                 <img src={this.state.coverPhoto} />
@@ -121,11 +121,13 @@ export default class SingleArtist extends React.Component {
                 <h2>Albums</h2>
                 <ul>
                     {this.state.artistAlbums.map((album,i)=>
-                        <li key={i}>
-                          <Link to={"singlealbum/" + album.albumID}>
-                            <img src= {album.albumArt}/>
-                          </Link>
-                          <h6 className= "artist-image">{album.albumName}</h6>
+                        <li className="music-item" key={i}>
+                            <Link to={"singlealbum/" + album.albumID}>
+                                <span>
+                                    <img src={album.albumArt} className="music-image"/>
+                                    <p className="artist-image" >{album.albumName}</p>
+                                </span>
+                            </Link>
                         </li>
                     )}
                 </ul>

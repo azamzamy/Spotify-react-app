@@ -24,7 +24,8 @@ export default class Home extends React.Component {
 			items: [],
 			name: "",
 			url :"",
-			images : []
+			images : [],
+            artistID : []
 		}
 		  		console.log("CONSTRUCTOR");
 	}
@@ -32,6 +33,7 @@ export default class Home extends React.Component {
   	componentWillMount(){
   		console.log("hommeeeeee");
 
+        var ids = [];
 		let keyword = "q";
 		params.q = keyword;
 		axios.get(API_URL, {params: params}).then(response => {
@@ -48,15 +50,16 @@ export default class Home extends React.Component {
 			for (var i = 0; i <20; i++) {
 
 				var imgURL = this.state.items[i].images.length;
-				if(imgURL > 2){
-					imgAr.push(this.state.items[i].images[2].url);
+				if(imgURL > 1){
+					imgAr.push(this.state.items[i].images[0].url);
 					itemsName.push(this.state.items[i].name);
+                    ids.push(response.data.artists.items[i].id);
 					console.log("#######!       " + i);
 					console.log(this.state.items[i].images[2].url);
 				}
 
 			}
-			console.log(imgAr);
+            this.setState({artistID : ids});
 		});
 
 	}
@@ -64,14 +67,16 @@ export default class Home extends React.Component {
   	render() {
   		console.log("home render");
   		return (
-            <div>
+            <div className="body-container">
               <h1>Top Artists</h1>
               	{imgAr.map((img,i)=>
-	              		<li key={i}>
-	              			<Link to="albums">
-	              				<img src={""+img}/>
+	              		<li className="music-item" key={i}>
+	              			<Link to={"singleartist/" + this.state.artistID[i]}>
+                                <span>
+    	              				<img src={""+img} className="music-image"/>
+    	              			     <p className="music-title" >{itemsName[i]}</p>
+    	              			</span>
 	              			</Link>
-	              			<p>{itemsName[i]}</p>
 	              		</li>
               	)}
 

@@ -1,0 +1,25 @@
+.artist__section{
+
+}
+
+.artist__section__details{
+    color: white;
+}
+
+.artist__section__image{
+background-image: url("https://i.scdn.co/image/5eb1ba2ee2551e02006a433b4e1ec98075645e9b"), linear-gradient(#eb01a5, #d13531);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 25%;
+    padding-top: 35%;
+    position: relative;
+
+}
+
+.artist__section__followers{
+
+}
+
+.artist__section__title{
+
+}

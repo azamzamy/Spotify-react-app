@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router";
 import axios from 'axios';
+import '../index.css';
+
 // import Footer from "../components/layout/Footer";
 // import Nav from "../components/layout/Nav";
 const API_URL = 'https://api.spotify.com/v1/search';
@@ -11,6 +13,7 @@ let params = {
 };
 var imgAr = [];
 var itemsName = [];
+var albumsId=[];
 export default class Albums extends React.Component {
 
 	constructor(){
@@ -19,7 +22,7 @@ export default class Albums extends React.Component {
 		this.state = {
 			items: [],
 			imgArray:[],
-			itemsName:[]
+			itemsName:[],
 		}
 	}
 	searchAlbum (event){
@@ -36,27 +39,34 @@ export default class Albums extends React.Component {
 
 				var imgURL = this.state.items[i].images.length;
 				if(imgURL > 2){
-					imgAr.push(this.state.items[i].images[2].url);
+					imgAr.push(this.state.items[i].images[1].url);
 					itemsName.push(this.state.items[i].name);
-				} 
+					albumsId.push(this.state.items[i].id);
+				}
 
 			}
 			this.setState({imgArray:imgAr});
 			this.setState({itemsName:itemsName});
+
 		});
 	}
   	render() {
 
+
+
 	  	return (
-	            <div>
-	              <h1>Spotify App ALBUMS</h1>
+	            <div  className="body-container">
+	              <h1 className="no-margin">Search For Albums</h1>
 	              <form onSubmit={this.searchAlbum}>
-	              <input ref="album_txt" placeholder="Search for Albums"/>
+	              <input className="searcher" ref="album_txt" placeholder="Search for Albums"/>
 	              </form>
-	              {this.state.imgArray.map((img,i)=> 
-	              		<li key={i}>
-	              			<Link to="singlealbum"> 
-	              				<img src={""+img}/>
+	              {this.state.imgArray.map((img,i)=>
+	              		<li key={i} className="music-item">
+	              			<Link to= {"singlealbum/"+albumsId[i]}>
+                                <span>
+     	              				<img src={""+img} className="music-image"/>
+     	              				<p className="music-title">{this.state.itemsName[i]}</p>
+     	              			</span>
 	              			</Link>
 	              			<p>{this.state.itemsName[i]}</p>
 	              		</li>

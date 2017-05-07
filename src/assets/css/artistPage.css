@@ -1,0 +1,28 @@
+.artist__section{
+
+}
+
+.artist__section__details{
+    color: white;
+}
+
+.artist__section__image{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 25%;
+    padding-top: 35%;
+    position: relative;
+
+}
+
+.Tracks__Table{
+    padding-left: 4%;
+}
+
+.artist__section__followers{
+
+}
+
+.artist__section__title{
+
+}

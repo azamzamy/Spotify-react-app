@@ -4,7 +4,24 @@ body {
   font-family: helvetica neue,helvetica;
   font-size: 14px;
   margin-left: 200px;
-  background-color: rgba(0,0,0,0.9);
+  background-color: rgba(1,0,0,0.9);
+}
+
+.player__bar__img{
+    width: 60px;
+    height: 60px;
+    MARGIN-LEFT: 4%;
+}
+
+.player__bar__left{
+    float: left;
+}
+
+.topTracks{
+    padding: 10px;
+    float: left;
+    width: 90%;
+    padding-left: 5%;
 }
 
 h1{
@@ -15,7 +32,6 @@ h1{
   font-weight: 600;
   margin: 30px 0px 40px 10px;
 }
-
 
 .navigator{
   display: block;
@@ -33,6 +49,7 @@ h1{
   padding: 15% 15% 15% 15%;
   margin-bottom: 11%;
 }
+
 .nav-buttons{
     list-style-type: none;
     padding-left: 19%;
@@ -77,6 +94,7 @@ h1{
 
 .body-container{
   padding-left: 1.6%;
+
 }
 .padding--right {
   padding-right: 5%;
@@ -109,8 +127,8 @@ h1{
   height: 50%;
   width: 100%;*/
   width: 98.5%;
-  max-height: 38.5%;
-  max-height: 38.5vh;
+  max-height: 37.8%;
+  max-height: 37.8vh;
   overflow: hidden;
   opacity: 50%;
 }
@@ -164,18 +182,23 @@ h1.no-margin{
   color: white;
   margin-left: 10%;
   width: 80%;
-   height: 40px;
-
+  height: 40px;
+  border: none;
+  outline: none;
 }
 
-.button :hover{
+.Album-container{
+padding: 3% 3% 3% 3%
+}
+
+.button:hover{
   background-color: #219042;
-  
+
 }
 .leftSide{
   float: left;
-  margin-left: 5%;
-  margin-top: 3%;
+  padding: 10px;
+  width: 300px;
 }
 .ablum-title{
   text-align: center;
@@ -183,6 +206,7 @@ h1.no-margin{
   margin: 0%;
   padding: 0%;
   padding-bottom: 2%;
+  font-size: 26px;
 
 }
 .track-title{
@@ -190,46 +214,130 @@ h1.no-margin{
 }
 .artist-txt{
   text-align: center;
-  color: grey;
+  font-size: .8em;
+color: gray;
+font-weight: 100;
   padding: 0%;
   margin: 0%;
   padding-bottom: 2%;
+  font-family: helvetica neue,helvetica;
+
+}
+
+.track-title{
+    font-size: 12px;
+}
+
+
+.topTracks tr{
+    height: 40px;
+}
+
+.topTracks tr:hover{
+    background-color: black;
+}
+.topTracks table{
+    width: 100%;
+}
+.right-side tr{
+  height: 40px;
+  }
+.right-side tr:hover{
+  background-color: black;
+}
+.right-side table{
+  width: 100%;
 }
 .right-side{
-  margin-left: 5%;
-  margin-top: 3%;
+  padding: 10px;
   float: left;
+  width: calc(100% - 300px);
+  padding-left: 5%;
 }
 .col_duration{
   padding-left:10px;
+  color:#8C8C8C;
+}
+
+.trackNumber{
+    color:#8C8C8C;
 }
 .col_name{
   padding-left:10px;
   padding-right: 50px;
+  color:white;
 }
 .clear{
   clear: both;
 }
-.row{
+.table-row{
   margin-bottom: 5%;
 }
+.right-side tr{
+  height: 40px;
+  }
+.right-side tr:hover{
+  background-color: black;
+}
+.right-side table{
+  width: 100%;
+}
+.artist__section{
 
-.row :hover {
-  background-color: white;
 }
 
+.artist__section__details{
+    color: white;
+}
 
+.artist__section__image{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 25%;
+    padding-top: 35%;
+    position: relative;
 
+}
 
+.Tracks__Table tbody tr td{
+    padding-left: 2%;
+    font-family: helvetica neue, helvetica;
+    font-weight: 400;
+    font-size: 16px;
+}
+.app{
+    position: relative;
+}
+.player__bar{
 
+    background-color: #252525;
+    position: fixed;
+    width: 100%;
+    height: 13%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.player__controls__button{
+    margin: 50%;
+    color: white;
+}
+.player__bar__seek{
+    width: 72%;
+    /* text-align: center; */
+    color: green;
+    padding-left: 30%;
+    padding-top: 0.5%;
+    float: left;
+}
+/*.player__bar input{
+    width: 30%;
 
+}*/
+.artist__section__followers{
 
+}
 
+.artist__section__title{
 
-
-
-
-
-
-
-
+}

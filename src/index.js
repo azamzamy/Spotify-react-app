@@ -25,9 +25,10 @@ class App extends React.Component{
             <Route path="home" component={Home}></Route>
             <Route path="singleartist/:artistID" component={SingleArtist}></Route>
             <Route path="singlealbum/:albumID" component={SingleAlbum}></Route>
+
           </Route>
         </Router>
-        {this.props.children}
+
       </div>
     )
 

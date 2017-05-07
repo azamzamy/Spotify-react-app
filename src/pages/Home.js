@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import axios from 'axios';
 import SingleArtist from './SingleArtist.js';
-import { browserHistory } from 'react-router';
+import Player from './player.js';
 // import Footer from "../components/layout/Footer";
 // import Nav from "../components/layout/Nav";
 
@@ -15,7 +15,6 @@ let params = {
 	maxResults: 20
 };
 export default class Home extends React.Component {
-
   	constructor(props) {
 		super(props);
 		// this.load = this.load.bind(this)
@@ -25,14 +24,16 @@ export default class Home extends React.Component {
 			items: [],
 			name: "",
 			url :"",
-			images : []
+			images : [],
+            artistID : []
 		}
 		  		console.log("CONSTRUCTOR");
 	}
-	
+
   	componentWillMount(){
   		console.log("hommeeeeee");
 
+        var ids = [];
 		let keyword = "q";
 		params.q = keyword;
 		axios.get(API_URL, {params: params}).then(response => {
@@ -52,12 +53,13 @@ export default class Home extends React.Component {
 				if(imgURL > 1){
 					imgAr.push(this.state.items[i].images[0].url);
 					itemsName.push(this.state.items[i].name);
+                    ids.push(response.data.artists.items[i].id);
 					console.log("#######!       " + i);
-					console.log(this.state.items[i].images[0].url);
+					console.log(this.state.items[i].images[2].url);
 				}
 
 			}
-			console.log(imgAr);
+            this.setState({artistID : ids});
 		});
 
 	}
@@ -69,15 +71,15 @@ export default class Home extends React.Component {
               <h1>Top Artists</h1>
               	{imgAr.map((img,i)=>
 	              		<li className="music-item" key={i}>
-	              			<Link to={"singleartist/" + this.state.items[i].id}>
-	              			<span>
-	              				<img src={""+img} className="music-image"/>
-	              			<p className="music-title" >{itemsName[i]}</p>
-	              			</span>
+	              			<Link to={"singleartist/" + this.state.artistID[i]}>
+                                <span>
+    	              				<img src={""+img} className="music-image"/>
+    	              			     <p className="music-title" >{itemsName[i]}</p>
+    	              			</span>
 	              			</Link>
 	              		</li>
               	)}
-
+                <Player/>
             </div>
 
         );

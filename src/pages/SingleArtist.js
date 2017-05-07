@@ -1,14 +1,21 @@
-
 import React from "react";
 import { Link } from "react-router";
 import axios from 'axios';
+import Player from './player.js';
+import '../index.css';
+import '../assets/css/artistPage.css';
 
 var API_URL = 'https://api.spotify.com/v1/artists/';
 let params = {
     country : ''
 };
+var style = {
+  backgroundImage: ''
+};
 
 export default class SingleArtist extends React.Component {
+
+
 
  constructor(props){
       super(props);
@@ -18,8 +25,24 @@ export default class SingleArtist extends React.Component {
           artistID: "",
           coverPhoto: "",
           artistName: "",
-          artistFollowers: ""
+          artistFollowers: "",
+          preview_url: "",
+          artistName : "",
+          img : "",
+          songName:""
       }
+    }
+
+
+    anaDost(i){
+        console.log('dost = ' );
+        console.log(this.state.topTracks[i].preview_url);
+        var preview  = this.state.topTracks[i].preview_url;
+        this.setState({preview_url : preview});
+        console.log('el3b');
+        console.log(this.state.preview_url);
+        this.setState({img:this.state.topTracks[i].img});
+        this.setState({songName:this.state.topTracks[i].name});
     }
 
 
@@ -41,7 +64,8 @@ export default class SingleArtist extends React.Component {
             console.log(this.state.artistFollowers);
             console.log(this.state.coverPhoto);
             console.log(this.state.artistName);
-
+            style.backgroundImage =  'url(' +  this.state.coverPhoto  + ')';
+            console.log(style);
 		});
     }
 
@@ -59,6 +83,7 @@ export default class SingleArtist extends React.Component {
                 });
             }
             this.setState({artistAlbums : albums});
+
 		});
     }
 
@@ -76,17 +101,17 @@ export default class SingleArtist extends React.Component {
 
                 tracks.push({
                     name: response.data.tracks[i].name ,
-                    duration_ms: response.data.tracks[i].duration_ms
+                    duration_ms: response.data.tracks[i].duration_ms,
+                    preview_url: response.data.tracks[i].preview_url,
+                    img:response.data.tracks[i].album.images[0].url
                 });
             }
             this.setState({topTracks:tracks});
-
 		});
 
 	}
 
   render() {
-      console.log(this.props.params.artistID);
         if(this.props.art != null){
           var artists = this.props.art;
           var name = this.props.name;
@@ -100,37 +125,40 @@ export default class SingleArtist extends React.Component {
 
 
     return (
-            <div >
-                <h5> {this.state.artistFollowers} Followers </h5>
-                <h2>{this.state.artistName}</h2>
-                <img src={this.state.coverPhoto} />
+            <div className="artist__section">
+                <div className="artist__section__image" style={style}>
+                    <h5> {this.state.artistFollowers} Followers </h5>
+                    <h2>{this.state.artistName}</h2>
+                </div>
                 <h2>Top Tracks</h2>
-                <table class="Tracks__Table">
-                    <tbody>
-                        {this.state.topTracks.map((track,i)=>
-                            <tr key={i}>
-                                <td>{i+1}.</td>
-                                <td>{track.name}</td>
-                                <td>{track.duration_ms}</td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
-
+                	<div className="topTracks">
+                        <table className="Tracks__Table">
+                            <tbody>
+                                {this.state.topTracks.map((track,i)=>
+                                    <tr key={i} onClick={this.anaDost.bind(this,i)}>
+                                        <td className="col_duration">{i+1}.</td>
+                                        <td className="col_name">{track.name}</td>
+                                        <td className="col_duration">{track.duration_ms}</td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="clear"></div>
                 <h2>Albums</h2>
                 <ul>
                     {this.state.artistAlbums.map((album,i)=>
-                        <li key={i} className="music-item">
-                          <Link to={"singlealbum/" + album.albumID}>
-                          <span>
-                            <img src= {album.albumArt} className="music-image"/>
-                            </span>
-                          </Link>
-                          <h6 className= "music-title">{album.albumName}</h6>
+                        <li className="music-item" key={i}>
+                            <Link to={"singlealbum/" + album.albumID}>
+                                <span>
+                                    <img src={album.albumArt} className="music-image"/>
+                                    <p className="artist-image" >{album.albumName}</p>
+                                </span>
+                            </Link>
                         </li>
                     )}
                 </ul>
-
+                <Player preview_url={this.state.preview_url} artistName = {this.state.artistName} img={this.state.img} songName={this.state.songName}/>
             </div>
             );
   }

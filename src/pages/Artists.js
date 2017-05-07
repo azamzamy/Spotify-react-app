@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router";
 import axios from 'axios';
 import '../index.css';
-
 // import Footer from "../components/layout/Footer";
 // import Nav from "../components/layout/Nav";
 const API_URL = 'https://api.spotify.com/v1/search';
@@ -15,7 +14,7 @@ var imgAr = [];
 var itemsName = [];
 var artistIds = [];
 export default class Artists extends React.Component {
-	
+
 
 	constructor(props){
 		super(props);
@@ -57,6 +56,9 @@ export default class Artists extends React.Component {
             this.setState({artistIds:artistIds});
             console.log("Response fetched");
 		});
+		// console.log("ON CLICK ########");
+		// console.log("ON CLICK ########" + this.state.imgArray);
+		// console.log("ON CLICK ########" + this.state.itemsName);
 	}
   render() {
 
@@ -64,14 +66,15 @@ export default class Artists extends React.Component {
 	            <div className="body-container">
 	              <h1 className="no-margin">Search For Artists</h1>
 	              <form onSubmit={this.searchAlbum}>
-	              <input ref="artist_txt" placeholder="Search for Artists" className="searcher"/>
+	              <input className="searcher" ref="artist_txt" placeholder="Search for Artists"/>
 	              </form>
 	              {this.state.imgArray.map((img,i)=>
 	              		<li key={i} className="music-item">
-	              			<Link to={"singleartist/" + this.state.artistIds[i]}><span>
-	              				<img src={""+img} className="music-image"/>
-	              				<p className="music-title">{this.state.itemsName[i]}</p>
-	              				</span>
+	              			<Link to={"singleartist/" + this.state.artistIds[i]}>
+                                <span>
+    	              				<img src={""+img} className="music-image"/>
+    	              				<p className="music-title">{this.state.itemsName[i]}</p>
+    	              			</span>
 	              			</Link>
 	              		</li>
               	)}

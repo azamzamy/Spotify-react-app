@@ -13,7 +13,7 @@ var imgAr = [];
 var itemsName = [];
 var artistIds = [];
 export default class Artists extends React.Component {
-
+	
 
 	constructor(props){
 		super(props);
@@ -44,7 +44,7 @@ export default class Artists extends React.Component {
                 artistIds.push(response.data.artists.items[i].id);
 				var imgURL = this.state.items[i].images.length;
 				if(imgURL > 2){
-					imgAr.push(this.state.items[i].images[2].url);
+					imgAr.push(this.state.items[i].images[1].url);
 					itemsName.push(this.state.items[i].name)
 
 				}
@@ -62,17 +62,18 @@ export default class Artists extends React.Component {
   render() {
 
   	  	return (
-	            <div>
-	              <h1>Spotify App Artists</h1>
+	            <div className="body-container">
+	              <h1 className="no-margin">Search For Artists</h1>
 	              <form onSubmit={this.searchAlbum}>
-	              <input ref="artist_txt" placeholder="Search for Artists"/>
+	              <input ref="artist_txt" placeholder="Search for Artists" className="searcher"/>
 	              </form>
 	              {this.state.imgArray.map((img,i)=>
-	              		<li key={i}>
-	              			<Link to={"singleartist/" + this.state.artistIds[i]}>
-	              				<img src={""+img}/>
+	              		<li key={i} className="music-item">
+	              			<Link to={"singleartist/" + this.state.artistIds[i]}><span>
+	              				<img src={""+img} className="music-image"/>
+	              				<p className="music-title">{this.state.itemsName[i]}</p>
+	              				</span>
 	              			</Link>
-	              			<p>{this.state.itemsName[i]}</p>
 	              		</li>
               	)}
 	            </div>

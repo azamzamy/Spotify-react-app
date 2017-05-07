@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import axios from 'axios';
 import SingleArtist from './SingleArtist.js';
-
+import { browserHistory } from 'react-router';
 // import Footer from "../components/layout/Footer";
 // import Nav from "../components/layout/Nav";
 
@@ -15,6 +15,7 @@ let params = {
 	maxResults: 20
 };
 export default class Home extends React.Component {
+
   	constructor(props) {
 		super(props);
 		// this.load = this.load.bind(this)
@@ -28,6 +29,10 @@ export default class Home extends React.Component {
 		}
 		  		console.log("CONSTRUCTOR");
 	}
+
+	onEnter(next, transition) {
+        console.log('Hi from HomeView/DefaultView')
+      }
 
   	componentWillMount(){
   		console.log("hommeeeeee");
@@ -48,11 +53,11 @@ export default class Home extends React.Component {
 			for (var i = 0; i <20; i++) {
 
 				var imgURL = this.state.items[i].images.length;
-				if(imgURL > 2){
-					imgAr.push(this.state.items[i].images[2].url);
+				if(imgURL > 1){
+					imgAr.push(this.state.items[i].images[0].url);
 					itemsName.push(this.state.items[i].name);
 					console.log("#######!       " + i);
-					console.log(this.state.items[i].images[2].url);
+					console.log(this.state.items[i].images[0].url);
 				}
 
 			}
@@ -64,14 +69,16 @@ export default class Home extends React.Component {
   	render() {
   		console.log("home render");
   		return (
-            <div>
+            <div className="body-container">
               <h1>Top Artists</h1>
               	{imgAr.map((img,i)=>
-	              		<li key={i}>
-	              			<Link to="albums">
-	              				<img src={""+img}/>
+	              		<li className="music-item" key={i}>
+	              			<Link to={"singleartist/" + this.state.items[i].id}>
+	              			<span>
+	              				<img src={""+img} className="music-image"/>
+	              			<p className="music-title" >{itemsName[i]}</p>
+	              			</span>
 	              			</Link>
-	              			<p>{itemsName[i]}</p>
 	              		</li>
               	)}
 

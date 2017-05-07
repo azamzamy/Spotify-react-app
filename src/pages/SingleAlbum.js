@@ -50,7 +50,9 @@ export default class SingleAlbum extends React.Component {
 	              <p>{this.state.artist_name}</p>
 	              <p>{ this.state.tracks.length} Track</p>
 					<Link to= {"singleartist/"+this.state.artist.id}> 
+					<span>
   					 <button>Artist Profile</button>
+  					 </span>
 					</Link>
 	              <table>
 	              <tbody>

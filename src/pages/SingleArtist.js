@@ -10,7 +10,6 @@ let params = {
 
 export default class SingleArtist extends React.Component {
 
-
  constructor(props){
       super(props);
       this.state = {
@@ -123,7 +122,9 @@ export default class SingleArtist extends React.Component {
                     {this.state.artistAlbums.map((album,i)=>
                         <li key={i}>
                           <Link to={"singlealbum/" + album.albumID}>
+                          <span>
                             <img src= {album.albumArt}/>
+                            </span>
                           </Link>
                           <h6 className= "artist-image">{album.albumName}</h6>
                         </li>

@@ -19,8 +19,8 @@ class App extends React.Component{
       <div>
         <Router history={hashHistory}>
           <Route path="/" component={Layout}>
-            <IndexRoute component={Home} onEnter={Home.onEnter}> </IndexRoute>
-            <Route path="albums" component={Albums} onEnter={Home.onEnter}></Route>
+            <IndexRoute component={Home}> </IndexRoute>
+            <Route path="albums" component={Albums}></Route>
             <Route path="artists" component={Artists}></Route>
             <Route path="home" component={Home}></Route>
             <Route path="singleartist/:artistID" component={SingleArtist}></Route>

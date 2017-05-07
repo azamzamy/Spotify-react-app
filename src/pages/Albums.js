@@ -31,7 +31,6 @@ export default class Albums extends React.Component {
 		let keyword = album_name;
 		params.q = keyword;
 		// params.type = type;
-		try{
 		axios.get(API_URL, {params: params}).then(response => {
 			this.setState({items: response.data.albums.items});
 			for (var i = 0; i <20; i++) {
@@ -48,10 +47,6 @@ export default class Albums extends React.Component {
 			this.setState({itemsName:itemsName});
 
 		});
-		}
-		catch(e){
-			console.log("ASASASASAS" + e);
-		}
 	}
   	render() {
 

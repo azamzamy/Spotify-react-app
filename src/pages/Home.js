@@ -29,11 +29,7 @@ export default class Home extends React.Component {
 		}
 		  		console.log("CONSTRUCTOR");
 	}
-
-	onEnter(next, transition) {
-        console.log('Hi from HomeView/DefaultView')
-      }
-
+	
   	componentWillMount(){
   		console.log("hommeeeeee");
 

@@ -38,6 +38,7 @@ export default class SingleAlbum extends React.Component {
   	render() {
 	  	return (
 	            <div>
+
 	              	<div className="leftSide">
 		              	<img src={""+this.state.img}/>
 		              	<h1 className="ablum-title">{this.state.album_name}</h1>		              	

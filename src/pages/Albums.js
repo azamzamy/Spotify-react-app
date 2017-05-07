@@ -39,7 +39,7 @@ export default class Albums extends React.Component {
 
 				var imgURL = this.state.items[i].images.length;
 				if(imgURL > 2){
-					imgAr.push(this.state.items[i].images[2].url);
+					imgAr.push(this.state.items[i].images[1].url);
 					itemsName.push(this.state.items[i].name);
 					albumsId.push(this.state.items[i].id);
 				} 
@@ -55,17 +55,19 @@ export default class Albums extends React.Component {
   		
 
 	  	return (
-	            <div>
-	              <h1>Spotify App Albums</h1>
+	            <div className="body-container">
+	              <h1 className="no-margin">Search For Albums</h1>
 	              <form onSubmit={this.searchAlbum}>
-	              <input className= "search-bar" ref="album_txt" placeholder="Search for Albums"/>
+	              <input ref="album_txt" placeholder="Search for Albums" className="searcher"/>
 	              </form>
 	              {this.state.imgArray.map((img,i)=> 
-	              		<li key={i}>
+	              		<li key={i} className="music-item">
 	              			<Link to= {"singlealbum/"+albumsId[i]}> 
-	              				<img src={""+img}/>
+	              			<span>
+	              				<img src={""+img} className="music-image"/>
+	              				<p className="music-title">{this.state.itemsName[i]}</p>
+	              			</span>
 	              			</Link>
-	              			<p>{this.state.itemsName[i]}</p>
 	              		</li>
               	)}
 	            </div>

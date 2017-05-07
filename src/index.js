@@ -27,7 +27,7 @@ class App extends React.Component{
             <Route path="singlealbum/:albumID" component={SingleAlbum}></Route>
           </Route>
         </Router>
-
+        {this.props.children}
       </div>
     )
 

@@ -1,7 +1,7 @@
-
 import React from "react";
 import { Link } from "react-router";
 import axios from 'axios';
+import Player from './player.js';
 import '../index.css';
 import '../assets/css/artistPage.css';
 
@@ -25,8 +25,24 @@ export default class SingleArtist extends React.Component {
           artistID: "",
           coverPhoto: "",
           artistName: "",
-          artistFollowers: ""
+          artistFollowers: "",
+          preview_url: "",
+          artistName : "",
+          img : "",
+          songName:""
       }
+    }
+
+
+    anaDost(i){
+        console.log('dost = ' );
+        console.log(this.state.topTracks[i].preview_url);
+        var preview  = this.state.topTracks[i].preview_url;
+        this.setState({preview_url : preview});
+        console.log('el3b');
+        console.log(this.state.preview_url);
+        this.setState({img:this.state.topTracks[i].img});
+        this.setState({songName:this.state.topTracks[i].name});
     }
 
 
@@ -85,17 +101,17 @@ export default class SingleArtist extends React.Component {
 
                 tracks.push({
                     name: response.data.tracks[i].name ,
-                    duration_ms: response.data.tracks[i].duration_ms
+                    duration_ms: response.data.tracks[i].duration_ms,
+                    preview_url: response.data.tracks[i].preview_url,
+                    img:response.data.tracks[i].album.images[0].url
                 });
             }
             this.setState({topTracks:tracks});
-
 		});
 
 	}
 
   render() {
-      console.log(this.props.params.artistID);
         if(this.props.art != null){
           var artists = this.props.art;
           var name = this.props.name;
@@ -114,13 +130,12 @@ export default class SingleArtist extends React.Component {
                     <h5> {this.state.artistFollowers} Followers </h5>
                     <h2>{this.state.artistName}</h2>
                 </div>
-
                 <h2>Top Tracks</h2>
                 	<div className="topTracks">
                         <table className="Tracks__Table">
                             <tbody>
                                 {this.state.topTracks.map((track,i)=>
-                                    <tr key={i}>
+                                    <tr key={i} onClick={this.anaDost.bind(this,i)}>
                                         <td className="col_duration">{i+1}.</td>
                                         <td className="col_name">{track.name}</td>
                                         <td className="col_duration">{track.duration_ms}</td>
@@ -143,7 +158,7 @@ export default class SingleArtist extends React.Component {
                         </li>
                     )}
                 </ul>
-
+                <Player preview_url={this.state.preview_url} artistName = {this.state.artistName} img={this.state.img} songName={this.state.songName}/>
             </div>
             );
   }

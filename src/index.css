@@ -7,6 +7,16 @@ body {
   background-color: rgba(1,0,0,0.9);
 }
 
+.player__bar__img{
+    width: 60px;
+    height: 60px;
+    MARGIN-LEFT: 4%;
+}
+
+.player__bar__left{
+    float: left;
+}
+
 .topTracks{
     padding: 10px;
     float: left;
@@ -295,7 +305,35 @@ font-weight: 100;
     font-weight: 400;
     font-size: 16px;
 }
+.app{
+    position: relative;
+}
+.player__bar{
 
+    background-color: #252525;
+    position: fixed;
+    width: 100%;
+    height: 13%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.player__controls__button{
+    margin: 50%;
+    color: white;
+}
+.player__bar__seek{
+    width: 72%;
+    /* text-align: center; */
+    color: green;
+    padding-left: 30%;
+    padding-top: 0.5%;
+    float: left;
+}
+/*.player__bar input{
+    width: 30%;
+
+}*/
 .artist__section__followers{
 
 }

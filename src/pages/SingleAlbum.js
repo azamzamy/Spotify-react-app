@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import axios from 'axios';
 import '../index.css';
 import '../assets/css/artistPage.css';
-
+import Player from './player.js';
 const API_URL = 'https://api.spotify.com/v1/albums/';
 
 var imgAr = [];
@@ -20,7 +20,8 @@ export default class SingleAlbum extends React.Component {
 			tracks:[],
 			artist:"",
 			album_name:"",
-			img:""
+			img:"",
+			preview_url: ""
 		}
 	}
 
@@ -33,6 +34,13 @@ export default class SingleAlbum extends React.Component {
 			this.setState({artist: response.data.artists[0]});
 			this.setState({album_name: response.data.name});
 			this.setState({img: response.data.images[1].url});
+
+			for (var i = 0; i < response.data.tracks.items.length; i++) {
+					this.setState({preview_url:response.data.tracks.items[i].preview_url});
+			}
+
+			console.log(this.state.preview_url);
+
 		});
 
 
@@ -66,7 +74,7 @@ export default class SingleAlbum extends React.Component {
 					 </div>
 					 <div className="clear"></div>
 				</div>
-
+				<Player preview_url={this.state.preview_url} />
 			</div>
 
 

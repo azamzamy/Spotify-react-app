@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import axios from 'axios';
 import SingleArtist from './SingleArtist.js';
-
+import Player from './player.js';
 // import Footer from "../components/layout/Footer";
 // import Nav from "../components/layout/Nav";
 
@@ -79,7 +79,7 @@ export default class Home extends React.Component {
 	              			</Link>
 	              		</li>
               	)}
-
+                <Player/>
             </div>
 
         );

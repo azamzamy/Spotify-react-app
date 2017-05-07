@@ -120,13 +120,13 @@ export default class SingleArtist extends React.Component {
                 <h2>Albums</h2>
                 <ul>
                     {this.state.artistAlbums.map((album,i)=>
-                        <li key={i}>
+                        <li key={i} className="music-item">
                           <Link to={"singlealbum/" + album.albumID}>
                           <span>
-                            <img src= {album.albumArt}/>
+                            <img src= {album.albumArt} className="music-image"/>
                             </span>
                           </Link>
-                          <h6 className= "artist-image">{album.albumName}</h6>
+                          <h6 className= "music-title">{album.albumName}</h6>
                         </li>
                     )}
                 </ul>

@@ -76,7 +76,6 @@ export default class Artists extends React.Component {
     	              				<p className="music-title">{this.state.itemsName[i]}</p>
     	              			</span>
 	              			</Link>
-	              			<p>{this.state.itemsName[i]}</p>
 	              		</li>
               	)}
 	            </div>

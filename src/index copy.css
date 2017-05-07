@@ -4,14 +4,7 @@ body {
   font-family: helvetica neue,helvetica;
   font-size: 14px;
   margin-left: 200px;
-  background-color: rgba(1,0,0,0.9);
-}
-
-.topTracks{
-    padding: 10px;
-    float: left;
-    width: 90%;
-    padding-left: 5%;
+  background-color: rgba(0,0,0,0.9);
 }
 
 h1{
@@ -22,6 +15,7 @@ h1{
   font-weight: 600;
   margin: 30px 0px 40px 10px;
 }
+
 
 .navigator{
   display: block;
@@ -39,7 +33,6 @@ h1{
   padding: 15% 15% 15% 15%;
   margin-bottom: 11%;
 }
-
 .nav-buttons{
     list-style-type: none;
     padding-left: 19%;
@@ -84,7 +77,6 @@ h1{
 
 .body-container{
   padding-left: 1.6%;
-
 }
 .padding--right {
   padding-right: 5%;
@@ -117,8 +109,8 @@ h1{
   height: 50%;
   width: 100%;*/
   width: 98.5%;
-  max-height: 37.8%;
-  max-height: 37.8vh;
+  max-height: 38.5%;
+  max-height: 38.5vh;
   overflow: hidden;
   opacity: 50%;
 }
@@ -164,142 +156,5 @@ h1.no-margin{
 
 .searcher:focus{
   outline: none;
-
-}
-.button{
-  background-color: #2ebd59;
-  border-radius: 30px;
-  color: white;
-  margin-left: 10%;
-  width: 80%;
-  height: 40px;
-  border: none;
-  outline: none;
-}
-
-.Album-container{
-padding: 3% 3% 3% 3%
-}
-
-.button:hover{
-  background-color: #219042;
-
-}
-.leftSide{
-  float: left;
-  padding: 10px;
-  width: 300px;
-}
-.ablum-title{
-  text-align: center;
-  color: white;
-  margin: 0%;
-  padding: 0%;
-  padding-bottom: 2%;
-  font-size: 26px;
-
-}
-.track-title{
-   padding-bottom: 5%;
-}
-.artist-txt{
-  text-align: center;
-  font-size: .8em;
-color: gray;
-font-weight: 100;
-  padding: 0%;
-  margin: 0%;
-  padding-bottom: 2%;
-  font-family: helvetica neue,helvetica;
-
-}
-
-.track-title{
-    font-size: 12px;
-}
-
-
-.topTracks tr{
-    height: 40px;
-}
-
-.topTracks tr:hover{
-    background-color: black;
-}
-.topTracks table{
-    width: 100%;
-}
-.right-side tr{
-  height: 40px;
-  }
-.right-side tr:hover{
-  background-color: black;
-}
-.right-side table{
-  width: 100%;
-}
-.right-side{
-  padding: 10px;
-  float: left;
-  width: calc(100% - 300px);
-  padding-left: 5%;
-}
-.col_duration{
-  padding-left:10px;
-  color:#8C8C8C;
-}
-
-.trackNumber{
-    color:#8C8C8C;
-}
-.col_name{
-  padding-left:10px;
-  padding-right: 50px;
-  color:white;
-}
-.clear{
-  clear: both;
-}
-.table-row{
-  margin-bottom: 5%;
-}
-.right-side tr{
-  height: 40px;
-  }
-.right-side tr:hover{
-  background-color: black;
-}
-.right-side table{
-  width: 100%;
-}
-.artist__section{
-
-}
-
-.artist__section__details{
-    color: white;
-}
-
-.artist__section__image{
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 50% 25%;
-    padding-top: 35%;
-    position: relative;
-
-}
-
-.Tracks__Table tbody tr td{
-    padding-left: 2%;
-    font-family: helvetica neue, helvetica;
-    font-weight: 400;
-    font-size: 16px;
-}
-
-.artist__section__followers{
-
-}
-
-.artist__section__title{
 
 }

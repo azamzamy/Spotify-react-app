@@ -23,35 +23,34 @@ export default class Albums extends React.Component {
 			items: [],
 			imgArray:[],
 			itemsName:[],
+            albumsId:[]
 		}
 	}
+
 	searchAlbum (event){
 		event.preventDefault();
 		imgAr = [];
 		itemsName = [];
+        albumsId = [];
 		let album_name = this.refs.album_txt.value;
 		let keyword = album_name;
 		params.q = keyword;
-		// params.type = type;
 		axios.get(API_URL, {params: params}).then(response => {
 			this.setState({items: response.data.albums.items});
 			for (var i = 0; i <20; i++) {
-
 				var imgURL = this.state.items[i].images.length;
 				if(imgURL > 2){
 					imgAr.push(this.state.items[i].images[1].url);
-					itemsName.push(this.state.items[i].name);
-					albumsId.push(this.state.items[i].id);
 				}
-
+                itemsName.push(this.state.items[i].name);
+                albumsId.push(this.state.items[i].id);
 			}
 			this.setState({imgArray:imgAr});
 			this.setState({itemsName:itemsName});
-
+            this.setState({albumsId:albumsId});
 		});
 	}
   	render() {
-
 
 
 	  	return (
@@ -68,7 +67,6 @@ export default class Albums extends React.Component {
      	              				<p className="music-title">{this.state.itemsName[i]}</p>
      	              			</span>
 	              			</Link>
-	              			<p>{this.state.itemsName[i]}</p>
 	              		</li>
               	)}
 	            </div>

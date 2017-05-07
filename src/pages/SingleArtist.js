@@ -2,7 +2,8 @@
 import React from "react";
 import { Link } from "react-router";
 import axios from 'axios';
-import '../assets/css/artist-page.css'
+import '../index.css';
+import '../assets/css/artistPage.css';
 
 var API_URL = 'https://api.spotify.com/v1/artists/';
 let params = {
@@ -115,18 +116,20 @@ export default class SingleArtist extends React.Component {
                 </div>
 
                 <h2>Top Tracks</h2>
-                <table class="Tracks__Table">
-                    <tbody>
-                        {this.state.topTracks.map((track,i)=>
-                            <tr key={i}>
-                                <td>{i+1}.</td>
-                                <td>{track.name}</td>
-                                <td>{track.duration_ms}</td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
-
+                	<div className="topTracks">
+                        <table className="Tracks__Table">
+                            <tbody>
+                                {this.state.topTracks.map((track,i)=>
+                                    <tr key={i}>
+                                        <td className="col_duration">{i+1}.</td>
+                                        <td className="col_name">{track.name}</td>
+                                        <td className="col_duration">{track.duration_ms}</td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="clear"></div>
                 <h2>Albums</h2>
                 <ul>
                     {this.state.artistAlbums.map((album,i)=>

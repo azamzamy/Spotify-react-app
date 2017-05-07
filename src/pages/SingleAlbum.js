@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router";
 import axios from 'axios';
+import '../index.css';
+import '../assets/css/artistPage.css';
 
 const API_URL = 'https://api.spotify.com/v1/albums/';
 
@@ -21,6 +23,7 @@ export default class SingleAlbum extends React.Component {
 			img:""
 		}
 	}
+
 	componentWillMount(){
 
 		let keyword = this.props.params.albumID;
@@ -37,32 +40,35 @@ export default class SingleAlbum extends React.Component {
 
   	render() {
 	  	return (
-	            <div>
-	              	<div className="leftSide">
-		              	<img src={""+this.state.img}/>
-		              	<h1 className="ablum-title">{this.state.album_name}</h1>
-		              	<p className="artist-txt">{this.state.artist.name}</p>
-		              	<p className="ablum-title track-title">{ this.state.tracks.length} Track</p>
-					  	<Link to= {"singleartist/"+this.state.artist.id}>
-						<span>
-	  						<button className="button">Artist Profile</button>
-						</span>
+			<div className="row">
+				<div className="Album-container">
+					<div className="leftSide">
+						<img src={""+this.state.img}/>
+						<h1 className="ablum-title">{this.state.album_name}</h1>
+						<p className="artist-txt">{this.state.artist.name}</p>
+						<p className="ablum-title track-title">{ this.state.tracks.length} Track</p>
+						<Link to= {"singleartist/"+this.state.artist.id}>
+						 <button className="button">Artist Profile</button>
 						</Link>
 					</div>
 					<div className="right-side">
-			              <table>
-			              <tbody>
-				              		{this.state.tracks.map((track,i)=>
-				              			<tr className="row" key={i}>
-					              			<td >{i+1}.</td>
-					              			<td className="col_name">{track.name}</td>
-					              			<td className="col_duration">{track.duration_ms}</td>
-				              			</tr>
-		              				)}
-			              	</tbody>
-			              </table>
-			         </div>
-	            </div>
+						  <table className="Tracks__Table">
+							  <tbody>
+										{this.state.tracks.map((track,i)=>
+											<tr key={i}>
+												<td className="col_duration">{i+1}.</td>
+												<td className="col_name">{track.name}</td>
+												<td className="col_duration">{track.duration_ms}</td>
+											</tr>
+										)}
+								</tbody>
+						  </table>
+					 </div>
+					 <div className="clear"></div>
+				</div>
+
+			</div>
+
 
 	            );
 	  }

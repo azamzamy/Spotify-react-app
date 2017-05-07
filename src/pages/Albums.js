@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router";
 import axios from 'axios';
+import '../index.css';
+
 // import Footer from "../components/layout/Footer";
 // import Nav from "../components/layout/Nav";
 const API_URL = 'https://api.spotify.com/v1/search';

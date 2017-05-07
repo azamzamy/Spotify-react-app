@@ -2,13 +2,18 @@
 import React from "react";
 import { Link } from "react-router";
 import axios from 'axios';
+import '../assets/css/artist-page.css'
 
 var API_URL = 'https://api.spotify.com/v1/artists/';
 let params = {
     country : ''
 };
+var style = {
+  backgroundImage: ''
+};
 
 export default class SingleArtist extends React.Component {
+
 
 
  constructor(props){
@@ -42,7 +47,8 @@ export default class SingleArtist extends React.Component {
             console.log(this.state.artistFollowers);
             console.log(this.state.coverPhoto);
             console.log(this.state.artistName);
-
+            style.backgroundImage =  'url(' +  this.state.coverPhoto  + ')';
+            console.log(style);
 		});
     }
 
@@ -60,6 +66,7 @@ export default class SingleArtist extends React.Component {
                 });
             }
             this.setState({artistAlbums : albums});
+
 		});
     }
 
@@ -101,10 +108,12 @@ export default class SingleArtist extends React.Component {
 
 
     return (
-            <div className="body-container">
-                <h5> {this.state.artistFollowers} Followers </h5>
-                <h2>{this.state.artistName}</h2>
-                <img src={this.state.coverPhoto} />
+            <div className="artist__section">
+                <div className="artist__section__image" style={style}>
+                    <h5> {this.state.artistFollowers} Followers </h5>
+                    <h2>{this.state.artistName}</h2>
+                </div>
+
                 <h2>Top Tracks</h2>
                 <table class="Tracks__Table">
                     <tbody>

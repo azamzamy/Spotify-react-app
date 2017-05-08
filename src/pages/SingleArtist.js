@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router";
 import axios from 'axios';
 import Player from './player.js';
+import ListItem from './ListItem.js';
 import '../index.css';
 import '../assets/css/artistPage.css';
-import ListItem from './ListItem.js';
 
 var API_URL = 'https://api.spotify.com/v1/artists/';
 let params = {
@@ -42,14 +42,13 @@ export default class SingleArtist extends React.Component {
   
     anaDost(i){
         console.log('dost = ' );
-        console.log(this.state.topTracks[i].preview_url);
+        console.log(this.state.topTracks[i].img);
         var preview  = this.state.topTracks[i].preview_url;
         this.setState({preview_url : preview});
-        console.log('el3b');
-        console.log(this.state.preview_url);
-        this.setState({img:this.state.topTracks[i].img});
+        this.setState({img:this.state.topTracks[i].img.url});
         this.setState({songName:this.state.topTracks[i].name});
         this.setState({selectedItem: i});
+
         
     }
 
@@ -147,7 +146,7 @@ export default class SingleArtist extends React.Component {
                                 {this.state.topTracks.map(function (track,i) {
                                   var is_selected = this.state.selectedItem == i;
                                   return(
-                                    <ListItem keyNum={i} onClick={this.anaDost.bind(this,i)} 
+                                    <ListItem key={i} keyNum={i} onClick={this.anaDost.bind(this,i)} 
                                     isSelected={is_selected} trackName={track.name} 
                                     duration={track.duration_ms}>
                                   

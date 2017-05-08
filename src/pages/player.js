@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from "react-router";
 import { findDOMNode } from 'react-dom'
 import ReactPlayer from 'react-player'
 import axios from 'axios';
@@ -15,6 +16,7 @@ export default class Player extends Component {
     constructor(props){
          super(props);
          console.log("got a player working");
+         console.log(this.props.img);
          this.state = {
              preview_url:'',
            url: null,

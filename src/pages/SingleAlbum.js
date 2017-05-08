@@ -5,6 +5,7 @@ import '../index.css';
 import '../assets/css/artistPage.css';
 import Player from './player.js';
 const API_URL = 'https://api.spotify.com/v1/albums/';
+import ListItem from './ListItem.js';
 
 var imgAr = [];
 var itemsName = [];
@@ -23,6 +24,7 @@ export default class SingleAlbum extends React.Component {
 			album_name:"",
 			img:"",
 			preview_url: "",
+      selectedItem: -2,
 			showBar:false
 		}
 	}
@@ -36,11 +38,9 @@ export default class SingleAlbum extends React.Component {
         var preview  = items[i].url;
         this.setState({preview_url : preview});
         console.log('el3b');
+        this.setState({selectedItem: i});
         // this.setState({img:this.state.topTracks[i].img});
-        // this.setState({:items[i].songName});
-
-
-
+        // this.setState({:items[i].songName})
     }
 
 	componentWillMount(){
@@ -81,12 +81,17 @@ export default class SingleAlbum extends React.Component {
 					<div className="right-side">
 						  <table className="Tracks__Table">
 							  <tbody>
-										{this.state.tracks.map((track,i)=>
-											<tr key={i} onClick={this.anaDost.bind(this,i)}>
-												<td className="col_duration">{i+1}.</td>
-												<td className="col_name">{track.name}</td>
-												<td className="col_duration">{track.duration_ms}</td>
-											</tr>
+										{this.state.tracks.map(function (track,i) {
+                                  console.log("!!!!" + track);
+                                  var is_selected = this.state.selectedItem == i;
+                                  return(
+                                    <ListItem keyNum={i} onClick={this.anaDost.bind(this,i)} 
+                                    isSelected={is_selected} trackName={track.name} 
+                                    duration={track.duration_ms}>
+                                  
+                                    </ListItem>
+                                    );
+                                }.bind(this)
 										)}
 								</tbody>
 						  </table>

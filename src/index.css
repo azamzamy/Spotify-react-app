@@ -296,7 +296,6 @@ font-weight: 100;
     background-position: 50% 25%;
     padding-top: 35%;
     position: relative;
-    box-shadow: .25px .25px .5px .5px black;
     /*background: linear-gradient(0deg, #191919, transparent) !important*/
 }
 .artist__section__image::after{
@@ -393,4 +392,7 @@ font-weight: 100;
   padding-left: 5%;
   font-size: 30px;
   color: white;
+}
+.song__selection td{
+  color: #219042;
 }

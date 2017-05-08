@@ -29,7 +29,8 @@ export default class SingleArtist extends React.Component {
           preview_url: "",
           artistName : "",
           img : "",
-          songName:""
+          songName:"",
+          className:""
       }
     }
 
@@ -43,6 +44,7 @@ export default class SingleArtist extends React.Component {
         console.log(this.state.preview_url);
         this.setState({img:this.state.topTracks[i].img});
         this.setState({songName:this.state.topTracks[i].name});
+        this.setState({className:"song__selection td"});
     }
 
 
@@ -137,7 +139,7 @@ export default class SingleArtist extends React.Component {
                 <h2 className="top_tracks_title">Top Tracks</h2>
                 	<div className="topTracks">
                         <table className="Tracks__Table">
-                            <tbody>
+                            <tbody className={this.state.className} >
                                 {this.state.topTracks.map((track,i)=>
                                     <tr key={i} onClick={this.anaDost.bind(this,i)}>
                                         <td className="col_duration">{i+1}.</td>

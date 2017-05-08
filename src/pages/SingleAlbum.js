@@ -34,8 +34,6 @@ export default class SingleAlbum extends React.Component {
         // this.setState({img:this.state.topTracks[i].img});
         // this.setState({:items[i].songName});
 
-        
-
     }
 
 	componentWillMount(){

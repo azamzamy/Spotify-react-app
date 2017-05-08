@@ -141,7 +141,6 @@ export default class Player extends Component {
         <div className="clear"></div>
       </div>
         <section className='section'>
-          <h1>ReactPlayer Demo</h1>
           <div className='player-wrapper'>
             <ReactPlayer
               ref={player => { this.player = player }}
@@ -167,82 +166,6 @@ export default class Player extends Component {
               onDuration={duration => this.setState({ duration })}
             />
           </div>
-
-          <table><tbody>
-            <tr>
-              <th>Controls</th>
-              <td>
-                <button onClick={this.stop}>Stop</button>
-                <button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</button>
-              </td>
-            </tr>
-            <tr>
-              <th>Seek</th>
-              <td>
-                <input
-                  type='range' min={0} max={1} step='any'
-                  value={played}
-                  onMouseDown={this.onSeekMouseDown}
-                  onChange={this.onSeekChange}
-                  onMouseUp={this.onSeekMouseUp}
-                />
-              </td>
-            </tr>
-            <tr>
-              <th>Volume</th>
-              <td>
-                <input type='range' min={0} max={1} step='any' value={volume} onChange={this.setVolume} />
-              </td>
-            </tr>
-            <tr>
-              <th>Played</th>
-              <td><progress max={1} value={played} /></td>
-            </tr>
-            <tr>
-              <th>Loaded</th>
-              <td><progress max={1} value={loaded} /></td>
-            </tr>
-          </tbody></table>
-        </section>
-        <section className='section'>
-          <table><tbody>
-            <tr>
-            </tr>
-            <tr>
-              <th>SoundCloud</th>
-              <td>
-                {this.renderLoadButton('https://p.scdn.co/mp3-preview/509fccc5cedb62858f8ff5afc8ab4c2744e5fd4a?cid=null', 'Test A')}
-                {this.renderLoadButton('https://soundcloud.com/tycho/tycho-awake', 'Test B')}
-              </td>
-            </tr>
-          </tbody></table>
-
-          <h2>State</h2>
-
-          <table><tbody>
-            <tr>
-              <th>url</th>
-              <td className={!url ? 'faded' : ''}>
-                {(url instanceof Array ? 'Multiple' : url) || 'null'}
-              </td>
-            </tr>
-            <tr>
-              <th>playing</th>
-              <td>{playing ? 'true' : 'false'}</td>
-            </tr>
-            <tr>
-              <th>volume</th>
-              <td>{volume.toFixed(3)}</td>
-            </tr>
-            <tr>
-              <th>played</th>
-              <td>{played.toFixed(3)}</td>
-            </tr>
-            <tr>
-              <th>loaded</th>
-              <td>{loaded.toFixed(3)}</td>
-            </tr>
-          </tbody></table>
         </section>
       </div>
     )

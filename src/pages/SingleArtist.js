@@ -31,11 +31,15 @@ export default class SingleArtist extends React.Component {
           img : "",
           songName:"",
           className:"",
-          selectedItem: -2
+          selectedItem: -2,
+          showBar:false
       }
     }
-
-
+  
+    startPlayer(){
+		this.setState({showBar:true});
+	  }
+  
     anaDost(i){
         console.log('dost = ' );
         console.log(this.state.topTracks[i].preview_url);
@@ -49,14 +53,11 @@ export default class SingleArtist extends React.Component {
         
     }
 
-
-
     componentDidMount() {
         this.getTopTracks();
         this.getAlbums();
         this.getArtistDetails();
     }
-
 
     getArtistDetails() {
         // https://api.spotify.com/v1/artists/{id}
@@ -130,7 +131,7 @@ export default class SingleArtist extends React.Component {
 
 
     return (
-            <div className="artist__section">
+            <div className="artist__section" onClick={this.startPlayer.bind(this)}>
                 <div className="artist__section__image" style={style}>
                     <div className="section">
                         <p> {this.state.artistFollowers} Followers </p>
@@ -144,7 +145,6 @@ export default class SingleArtist extends React.Component {
                         <table className="Tracks__Table">
                             <tbody className={this.state.className} >
                                 {this.state.topTracks.map(function (track,i) {
-                                  console.log("!!!!" + track);
                                   var is_selected = this.state.selectedItem == i;
                                   return(
                                     <ListItem keyNum={i} onClick={this.anaDost.bind(this,i)} 
@@ -172,7 +172,11 @@ export default class SingleArtist extends React.Component {
                         </li>
                     )}
                 </ul>
-                <Player preview_url={this.state.preview_url} artistName = {this.state.artistName} img={this.state.img} songName={this.state.songName}/>
+                {this.state.showBar ? (
+                   <Player preview_url={this.state.preview_url}  artistName = {this.state.artistName} img={this.state.img} songName={this.state.songName}/>
+                  ) : (
+                   ''
+                )}
             </div>
             );
   }

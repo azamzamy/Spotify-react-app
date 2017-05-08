@@ -21,8 +21,22 @@ export default class SingleAlbum extends React.Component {
 			artist:"",
 			album_name:"",
 			img:"",
-			preview_url: ""
+			preview_url: "",
+			showBar : false
 		}
+	}
+
+
+
+	anaDost(i){
+		console.log('dost = ' );
+		console.log(this.state.topTracks[i].preview_url);
+
+		var preview  = this.state.tracks[i].preview_url;
+		this.setState({preview_url : preview});
+		this.setState({img:this.state.tracks[i].img});
+		this.setState({songName:this.state.tracks[i].name});
+		this.setState({showBar:true});
 	}
 
 	componentWillMount(){
@@ -42,8 +56,6 @@ export default class SingleAlbum extends React.Component {
 			console.log(this.state.preview_url);
 
 		});
-
-
 	}
 
   	render() {
@@ -63,7 +75,7 @@ export default class SingleAlbum extends React.Component {
 						  <table className="Tracks__Table">
 							  <tbody>
 										{this.state.tracks.map((track,i)=>
-											<tr key={i}>
+											<tr key={i}  onClick={this.anaDost.bind(this,i)}>
 												<td className="col_duration">{i+1}.</td>
 												<td className="col_name">{track.name}</td>
 												<td className="col_duration">{track.duration_ms}</td>
@@ -74,10 +86,8 @@ export default class SingleAlbum extends React.Component {
 					 </div>
 					 <div className="clear"></div>
 				</div>
-				<Player preview_url={this.state.preview_url} />
+				{ this.state.showBar ? (<Player preview_url={this.state.preview_url} />) : ('')}
 			</div>
-
-
 	            );
 	  }
 }

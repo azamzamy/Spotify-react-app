@@ -29,7 +29,8 @@ export default class SingleArtist extends React.Component {
           preview_url: "",
           artistName : "",
           img : "",
-          songName:""
+          songName:"",
+          showBar : false
       }
     }
 

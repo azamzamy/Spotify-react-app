@@ -25,7 +25,8 @@ export default class Home extends React.Component {
 			name: "",
 			url :"",
 			images : [],
-            artistID : []
+            artistID : [],
+            showBar : false
 		}
 		  		console.log("CONSTRUCTOR");
 	}
@@ -57,7 +58,6 @@ export default class Home extends React.Component {
 					console.log("#######!       " + i);
 					console.log(this.state.items[i].images[2].url);
 				}
-
 			}
             this.setState({artistID : ids});
 		});

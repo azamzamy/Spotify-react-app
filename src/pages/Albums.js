@@ -23,7 +23,8 @@ export default class Albums extends React.Component {
 			items: [],
 			imgArray:[],
 			itemsName:[],
-            albumsId:[]
+            albumsId:[],
+            showBar : true
 		}
 	}
 
@@ -61,7 +62,7 @@ export default class Albums extends React.Component {
 	              </form>
 	              {this.state.imgArray.map((img,i)=>
 	              		<li key={i} className="music-item">
-	              			<Link to= {"singlealbum/"+albumsId[i]}>
+	              			<Link to= {"singlealbum/"+albumsId[i]} showBar={this.state.showBar}>
                                 <span>
      	              				<img src={""+img} className="music-image"/>
      	              				<p className="music-title">{this.state.itemsName[i]}</p>

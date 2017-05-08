@@ -8,13 +8,15 @@ body {
 }
 
 .player__bar__img{
-    width: 60px;
-    height: 60px;
+    width: 75px;
+    height: 70px;
     MARGIN-LEFT: 4%;
 }
 
 .player__bar__left{
     float: left;
+    position: absolute;
+    transform: translateX(25%);
 }
 
 .topTracks{
@@ -308,6 +310,33 @@ font-weight: 100;
 .app{
     position: relative;
 }
+.player__bar__left__text{
+    float: left;
+}
+
+.player__bar__left__imgConatiner img{
+    padding-top: 100%;
+    background-size: cover;
+    background-position: 50%;
+    margin-bottom: 10px;
+    position: relative;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+.player__bar__left__imgConatiner{
+    float: left;
+    padding-right: 15%;
+    padding-left: 8%;
+    PADDING-TOP: 4%;
+}
+.player__bar__left__songName{
+    /*float: left;
+    padding-right: 5%;*/
+}
+.player__bar__left__artistName{
+    /*float: left;*/
+}
 .player__bar{
 
     background-color: #252525;
@@ -329,6 +358,7 @@ font-weight: 100;
     padding-left: 30%;
     padding-top: 0.5%;
     float: left;
+        POSITION: absolute;
 }
 /*.player__bar input{
     width: 30%;

@@ -29,11 +29,15 @@ export default class SingleArtist extends React.Component {
           preview_url: "",
           artistName : "",
           img : "",
-          songName:""
+          songName:"",
+          showBar:false
       }
     }
 
 
+    startPlayer(){
+		this.setState({showBar:true});
+	}
     anaDost(i){
         console.log('dost = ' );
         console.log(this.state.topTracks[i].preview_url);
@@ -125,7 +129,7 @@ export default class SingleArtist extends React.Component {
 
 
     return (
-            <div className="artist__section">
+            <div className="artist__section" onClick={this.startPlayer.bind(this)}>
                 <div className="artist__section__image" style={style}>
                     <div className="section">
                         <p> {this.state.artistFollowers} Followers </p>
@@ -162,7 +166,11 @@ export default class SingleArtist extends React.Component {
                         </li>
                     )}
                 </ul>
-                <Player preview_url={this.state.preview_url} artistName = {this.state.artistName} img={this.state.img} songName={this.state.songName}/>
+                {this.state.showBar ? (
+                   <Player preview_url={this.state.preview_url}  artistName = {this.state.artistName} img={this.state.img} songName={this.state.songName}/>
+                  ) : (
+                   ''
+                )}
             </div>
             );
   }

@@ -22,19 +22,24 @@ export default class SingleAlbum extends React.Component {
 			artist:"",
 			album_name:"",
 			img:"",
-			preview_url: ""
+			preview_url: "",
+			showBar:false
 		}
 	}
 
+	startPlayer(){
+		this.setState({showBar:true});
+	}
+	
     anaDost(i){
-       
+
         var preview  = items[i].url;
         this.setState({preview_url : preview});
         console.log('el3b');
         // this.setState({img:this.state.topTracks[i].img});
         // this.setState({:items[i].songName});
 
-        
+
 
     }
 
@@ -62,7 +67,7 @@ export default class SingleAlbum extends React.Component {
 
   	render() {
 	  	return (
-			<div className="row">
+			<div className="row" onClick={this.startPlayer.bind(this)}>
 				<div className="Album-container">
 					<div className="leftSide">
 						<img src={""+this.state.img}/>
@@ -88,7 +93,12 @@ export default class SingleAlbum extends React.Component {
 					 </div>
 					 <div className="clear"></div>
 				</div>
-				<Player preview_url={this.state.preview_url} />
+
+				{this.state.showBar ? (
+			       <Player preview_url={this.state.preview_url} />
+			      ) : (
+			       ''
+			    )}
 			</div>
 
 

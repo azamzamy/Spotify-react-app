@@ -4,6 +4,8 @@ import axios from 'axios';
 import '../index.css';
 import '../assets/css/artistPage.css';
 import Player from './player.js';
+import ListItem from './ListItem';
+
 const API_URL = 'https://api.spotify.com/v1/albums/';
 import ListItem from './ListItem.js';
 
@@ -24,8 +26,8 @@ export default class SingleAlbum extends React.Component {
 			album_name:"",
 			img:"",
 			preview_url: "",
-      		selectedItem: -2,
-			showBar:false
+			showBar:false,
+			selectedItem: -2
 		}
 	}
 
@@ -38,11 +40,8 @@ export default class SingleAlbum extends React.Component {
         var preview  = items[i].url;
         this.setState({preview_url : preview});
         console.log('el3b');
-        this.setState({selectedItem: i});
-        console.log("WHATUUP: ");
-        console.log(this.state.tracks[i]);
-        this.setState({img:this.state.tracks[i].img});
-
+        this.setState({selectedItem:i});
+        // this.setState({:items[i].songName});
         // this.setState({img:this.state.topTracks[i].img});
         // this.setState({:items[i].songName})
     }
@@ -85,17 +84,17 @@ export default class SingleAlbum extends React.Component {
 					<div className="right-side">
 						  <table className="Tracks__Table">
 							  <tbody>
-								{this.state.tracks.map(function (track,i) {
+                                {this.state.tracks.map(function(track,i) {
                                   var is_selected = this.state.selectedItem == i;
                                   return(
-                                    <ListItem key={i} keyNum={i} onClick={this.anaDost.bind(this,i)} 
-                                    isSelected={is_selected} trackName={track.name} 
+                                    <ListItem keyNum= {i} key={i} onClick={this.anaDost.bind(this,i)} isSelected = {is_selected} trackName={track.name} 
+
                                     duration={track.duration_ms}>
                                     </ListItem>
                                     );
                                 }.bind(this)
-										)}
-								</tbody>
+                                )}
+                            </tbody>
 						  </table>
 					 </div>
 					 <div className="clear"></div>

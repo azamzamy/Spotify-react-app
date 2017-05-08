@@ -5,6 +5,7 @@ import Player from './player.js';
 import ListItem from './ListItem.js';
 import '../index.css';
 import '../assets/css/artistPage.css';
+import ListItem from './ListItem';
 
 var API_URL = 'https://api.spotify.com/v1/artists/';
 let params = {
@@ -30,16 +31,15 @@ export default class SingleArtist extends React.Component {
           artistName : "",
           img : "",
           songName:"",
-          className:"",
-          selectedItem: -2,
-          showBar:false
+          showBar:false,
+          selectedItem: -2
       }
     }
   
     startPlayer(){
-		this.setState({showBar:true});
-	  }
-  
+    this.setState({showBar:true});
+  }
+
     anaDost(i){
         console.log('dost = ' );
         console.log(this.state.topTracks[i].img);
@@ -47,9 +47,7 @@ export default class SingleArtist extends React.Component {
         this.setState({preview_url : preview});
         this.setState({img:this.state.topTracks[i].img.url});
         this.setState({songName:this.state.topTracks[i].name});
-        this.setState({selectedItem: i});
-
-        
+        this.setState({selectedItem: i});        
     }
 
     componentDidMount() {
@@ -71,7 +69,7 @@ export default class SingleArtist extends React.Component {
             console.log(this.state.artistName);
             style.backgroundImage =  'url(' +  this.state.coverPhoto  + ')';
             console.log(style);
-		});
+    });
     }
 
     getAlbums() {
@@ -89,15 +87,15 @@ export default class SingleArtist extends React.Component {
             }
             this.setState({artistAlbums : albums});
 
-		});
+    });
     }
 
     getTopTracks(){
         var tracks = [];
-		params.country = "SE";
+    params.country = "SE";
         let API_REQUEST = API_URL + this.props.params.artistID + "/top-tracks";
 
-		axios.get(API_REQUEST, {params: params}).then(response => {
+    axios.get(API_REQUEST, {params: params}).then(response => {
             console.log("got Top tracks response...");
             console.log(response.data.tracks[0].name);
             console.log(response.data.tracks[0].duration_ms);
@@ -112,9 +110,9 @@ export default class SingleArtist extends React.Component {
                 });
             }
             this.setState({topTracks:tracks});
-		});
+    });
 
-	}
+  }
 
   render() {
         if(this.props.art != null){
@@ -140,16 +138,14 @@ export default class SingleArtist extends React.Component {
                     </div>
                 </div>
                 <h2 className="top_tracks_title">Top Tracks</h2>
-                	<div className="topTracks">
+                  <div className="topTracks">
                         <table className="Tracks__Table">
-                            <tbody className={this.state.className} >
-                                {this.state.topTracks.map(function (track,i) {
+                            <tbody>
+                                {this.state.topTracks.map(function(track,i) {
                                   var is_selected = this.state.selectedItem == i;
                                   return(
-                                    <ListItem key={i} keyNum={i} onClick={this.anaDost.bind(this,i)} 
-                                    isSelected={is_selected} trackName={track.name} 
+                                    <ListItem keyNum= {i} key={i} onClick={this.anaDost.bind(this,i)} isSelected = {is_selected} trackName={track.name} 
                                     duration={track.duration_ms}>
-                                  
                                     </ListItem>
                                     );
                                 }.bind(this)

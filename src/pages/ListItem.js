@@ -12,23 +12,23 @@ export default class ListItem extends React.Component{
       }
     }
 
-    hoverEvent() {
-        this.setState({hover_flag: !this.state.hover_flag});
-    }
-
     render(){
-        var liStyle = {
+        var liStyleWhite = {
             color: 'white'
         };
+        var liStyleGrey = {
+            color: '#8C8C8C'
+        };
         if (this.props.isSelected || this.state.hover_flag) {
-            liStyle['color'] = '#219042';
+            liStyleGrey['color'] = '#219042';
+            liStyleWhite['color'] = '#219042';
+
         }
-        console.log("KEEYYEYEYEYY" + this.props.keyNum);
         return (
-            <tr onClick={this.props.onClick}>
-                <td style={liStyle} className="col_duration">{this.props.keyNum}.</td>
-                <td style={liStyle} className="col_name">{this.props.trackName}</td>
-                <td style={liStyle} className="col_duration">{this.props.duration}</td>
+            <tr className="list-item" onClick={this.props.onClick}>
+                <td  className="col_duration"><a style={liStyleGrey}>{this.props.keyNum}.</a></td>
+                <td  className="col_name"><a style={liStyleWhite}>{this.props.trackName}</a></td>
+                <td  className="col_duration"><a style={liStyleGrey}>{this.props.duration}</a></td>
             </tr>
         );
     }

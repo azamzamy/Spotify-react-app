@@ -17,12 +17,6 @@ body {
     float: left;
 }
 
-.topTracks{
-    padding: 10px;
-    float: left;
-    width: 90%;
-    padding-left: 5%;
-}
 
 h1{
   color: white;
@@ -75,6 +69,12 @@ h1{
   color: white;
   text-decoration: none;
 }
+
+.nav-buttons a:focus{
+  color: white;
+  text-decoration: none;
+}
+
 .user{
   position: absolute;
   color: white;
@@ -254,19 +254,20 @@ font-weight: 100;
   width: calc(100% - 300px);
   padding-left: 5%;
 }
+
 .col_duration{
   padding-left:10px;
-  color:#8C8C8C;
 }
 
 .trackNumber{
     color:#8C8C8C;
 }
+
 .col_name{
   padding-left:10px;
   padding-right: 50px;
-  color:white;
 }
+
 .clear{
   clear: both;
 }
@@ -310,13 +311,16 @@ font-weight: 100;
 .artist__section__image a{
   text-decoration: none;
 }
-
+.Tracks__Table tr:hover{
+  transition: 0.2s;
+}
 .Tracks__Table tbody tr td{
     padding-left: 2%;
     font-family: helvetica neue, helvetica;
     font-weight: 400;
     font-size: 16px;
 }
+
 .app{
     position: relative;
 }
@@ -387,20 +391,28 @@ font-weight: 100;
   width: 100%;
   padding: 20px;
 }
+
+.topTracks{
+    padding: 10px;
+    float: left;
+    width: 90%;
+    padding-left: 3%;
+}
+.list-item a{
+    font-weight: 300;
+    font-family: helvetica neue, helvetica;
+}
+.list-item:hover a{
+  text-decoration: none;
+}
+
 .top_tracks_title{
-  padding: 10px;
-  padding-left: 5%;
-  font-size: 30px;
+  padding: 6px;
+  padding-left: 3%;
+  font-size: 4rem;
+  font-weight: 600;
   color: white;
 }
 .song__selection td{
   color: #219042;
 }
-/*
-tr:active td{
- color: #219042; 
-}*/
-/*
-tr:nth-child(2) td{
-  color: green;
-}*/

@@ -24,7 +24,7 @@ export default class SingleAlbum extends React.Component {
 			album_name:"",
 			img:"",
 			preview_url: "",
-      selectedItem: -2,
+      		selectedItem: -2,
 			showBar:false
 		}
 	}
@@ -39,6 +39,10 @@ export default class SingleAlbum extends React.Component {
         this.setState({preview_url : preview});
         console.log('el3b');
         this.setState({selectedItem: i});
+        console.log("WHATUUP: ");
+        console.log(this.state.tracks[i]);
+        this.setState({img:this.state.tracks[i].img});
+
         // this.setState({img:this.state.topTracks[i].img});
         // this.setState({:items[i].songName})
     }
@@ -81,14 +85,12 @@ export default class SingleAlbum extends React.Component {
 					<div className="right-side">
 						  <table className="Tracks__Table">
 							  <tbody>
-										{this.state.tracks.map(function (track,i) {
-                                  console.log("!!!!" + track);
+								{this.state.tracks.map(function (track,i) {
                                   var is_selected = this.state.selectedItem == i;
                                   return(
-                                    <ListItem keyNum={i} onClick={this.anaDost.bind(this,i)} 
+                                    <ListItem key={i} keyNum={i} onClick={this.anaDost.bind(this,i)} 
                                     isSelected={is_selected} trackName={track.name} 
                                     duration={track.duration_ms}>
-                                  
                                     </ListItem>
                                     );
                                 }.bind(this)

@@ -4,6 +4,7 @@ import axios from 'axios';
 import Player from './player.js';
 import '../index.css';
 import '../assets/css/artistPage.css';
+import ListItem from './ListItem.js';
 
 var API_URL = 'https://api.spotify.com/v1/artists/';
 let params = {
@@ -13,9 +14,8 @@ var style = {
   backgroundImage: ''
 };
 
+
 export default class SingleArtist extends React.Component {
-
-
 
  constructor(props){
       super(props);
@@ -30,7 +30,8 @@ export default class SingleArtist extends React.Component {
           artistName : "",
           img : "",
           songName:"",
-          className:""
+          className:"",
+          selectedItem: -2
       }
     }
 
@@ -44,8 +45,10 @@ export default class SingleArtist extends React.Component {
         console.log(this.state.preview_url);
         this.setState({img:this.state.topTracks[i].img});
         this.setState({songName:this.state.topTracks[i].name});
-        this.setState({className:"song__selection td"});
+        this.setState({selectedItem: i});
+        
     }
+
 
 
     componentDidMount() {
@@ -140,12 +143,17 @@ export default class SingleArtist extends React.Component {
                 	<div className="topTracks">
                         <table className="Tracks__Table">
                             <tbody className={this.state.className} >
-                                {this.state.topTracks.map((track,i)=>
-                                    <tr key={i} onClick={this.anaDost.bind(this,i)}>
-                                        <td className="col_duration">{i+1}.</td>
-                                        <td className="col_name">{track.name}</td>
-                                        <td className="col_duration">{track.duration_ms}</td>
-                                    </tr>
+                                {this.state.topTracks.map(function (track,i) {
+                                  console.log("!!!!" + track);
+                                  var is_selected = this.state.selectedItem == i;
+                                  return(
+                                    <ListItem keyNum={i} onClick={this.anaDost.bind(this,i)} 
+                                    isSelected={is_selected} trackName={track.name} 
+                                    duration={track.duration_ms}>
+                                  
+                                    </ListItem>
+                                    );
+                                }.bind(this)
                                 )}
                             </tbody>
                         </table>

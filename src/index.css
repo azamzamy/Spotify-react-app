@@ -396,3 +396,11 @@ font-weight: 100;
 .song__selection td{
   color: #219042;
 }
+/*
+tr:active td{
+ color: #219042; 
+}*/
+/*
+tr:nth-child(2) td{
+  color: green;
+}*/

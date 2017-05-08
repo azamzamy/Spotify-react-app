@@ -296,7 +296,20 @@ font-weight: 100;
     background-position: 50% 25%;
     padding-top: 35%;
     position: relative;
-
+    box-shadow: .25px .25px .5px .5px black;
+    /*background: linear-gradient(0deg, #191919, transparent) !important*/
+}
+.artist__section__image::after{
+   background:linear-gradient(0deg, #191919, transparent);
+    display: block;
+    position: relative;
+    margin-top: -150px;
+    height: 150px;
+    width: 100%;
+    content: '';
+}
+.artist__section__image a{
+  text-decoration: none;
 }
 
 .Tracks__Table tbody tr td{
@@ -309,7 +322,6 @@ font-weight: 100;
     position: relative;
 }
 .player__bar{
-
     background-color: #252525;
     position: fixed;
     width: 100%;
@@ -324,20 +336,61 @@ font-weight: 100;
 }
 .player__bar__seek{
     width: 72%;
-    /* text-align: center; */
     color: green;
     padding-left: 30%;
     padding-top: 0.5%;
     float: left;
 }
-/*.player__bar input{
-    width: 30%;
 
-}*/
 .artist__section__followers{
 
 }
 
 .artist__section__title{
+    font-family: helvetica neue;
+    font-size: 60px;
+    line-height: 1;
+    margin-bottom: 20px;
+    color:white;
+}
+.artist__section__image p{
+  font-family: helvetica neue, helvetica;
+  color: white;
+  padding: 0 10px;
+}
+.button_section{
+  background-color: #2ebd59;
+  color: white;
+  border-radius: 30px;
+  padding: 10px 20px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  transition: background-color .2s;
+  font-weight: 500;
+  margin-right: 10px
+}
+.button_section_play{
+    border: 1px solid white;
+    background-color: rgba(0, 0, 0, .2);
 
+}
+.button_section_play:hover{
+  background-color: rgba(0, 0, 0, .5);
+  color: white;
+}
+.button_section_hover:hover{
+  background-color: #219042;
+  color: white;
+}
+.section{
+  width: 100%;
+  padding: 20px;
+}
+.top_tracks_title{
+  padding: 10px;
+  padding-left: 5%;
+  font-size: 30px;
+  color: white;
 }

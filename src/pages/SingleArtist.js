@@ -127,10 +127,14 @@ export default class SingleArtist extends React.Component {
     return (
             <div className="artist__section">
                 <div className="artist__section__image" style={style}>
-                    <h5> {this.state.artistFollowers} Followers </h5>
-                    <h2>{this.state.artistName}</h2>
+                    <div className="section">
+                        <p> {this.state.artistFollowers} Followers </p>
+                        <h2 className="artist__section__title">{this.state.artistName}</h2>
+                        <a className="button_section button_section_hover">Follow</a>
+                        <a className="button_section_play button_section">Play All</a>
+                    </div>
                 </div>
-                <h2>Top Tracks</h2>
+                <h2 className="top_tracks_title">Top Tracks</h2>
                 	<div className="topTracks">
                         <table className="Tracks__Table">
                             <tbody>
@@ -145,7 +149,7 @@ export default class SingleArtist extends React.Component {
                         </table>
                     </div>
                     <div className="clear"></div>
-                <h2>Albums</h2>
+                <h2 className="top_tracks_title">Albums</h2>
                 <ul>
                     {this.state.artistAlbums.map((album,i)=>
                         <li className="music-item" key={i}>

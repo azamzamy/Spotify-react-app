@@ -9,6 +9,7 @@ const API_URL = 'https://api.spotify.com/v1/albums/';
 var imgAr = [];
 var itemsName = [];
 var followersList = [];
+var items =[];
 
 export default class SingleAlbum extends React.Component {
 
@@ -25,6 +26,18 @@ export default class SingleAlbum extends React.Component {
 		}
 	}
 
+    anaDost(i){
+       
+        var preview  = items[i].url;
+        this.setState({preview_url : preview});
+        console.log('el3b');
+        // this.setState({img:this.state.topTracks[i].img});
+        // this.setState({:items[i].songName});
+
+        
+
+    }
+
 	componentWillMount(){
 
 		let keyword = this.props.params.albumID;
@@ -37,6 +50,7 @@ export default class SingleAlbum extends React.Component {
 
 			for (var i = 0; i < response.data.tracks.items.length; i++) {
 					this.setState({preview_url:response.data.tracks.items[i].preview_url});
+					items.push({url:response.data.tracks.items[i].preview_url});
 			}
 
 			console.log(this.state.preview_url);
@@ -63,7 +77,7 @@ export default class SingleAlbum extends React.Component {
 						  <table className="Tracks__Table">
 							  <tbody>
 										{this.state.tracks.map((track,i)=>
-											<tr key={i}>
+											<tr key={i} onClick={this.anaDost.bind(this,i)}>
 												<td className="col_duration">{i+1}.</td>
 												<td className="col_name">{track.name}</td>
 												<td className="col_duration">{track.duration_ms}</td>

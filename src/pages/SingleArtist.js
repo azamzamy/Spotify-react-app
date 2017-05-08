@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import axios from 'axios';
 import Player from './player.js';
+import ListItem from './ListItem.js';
 import '../index.css';
 import '../assets/css/artistPage.css';
 import ListItem from './ListItem';
@@ -14,9 +15,8 @@ var style = {
   backgroundImage: ''
 };
 
+
 export default class SingleArtist extends React.Component {
-
-
 
  constructor(props){
       super(props);
@@ -35,30 +35,26 @@ export default class SingleArtist extends React.Component {
           selectedItem: -2
       }
     }
-
-
+  
     startPlayer(){
     this.setState({showBar:true});
   }
+
     anaDost(i){
         console.log('dost = ' );
-        console.log(this.state.topTracks[i].preview_url);
+        console.log(this.state.topTracks[i].img);
         var preview  = this.state.topTracks[i].preview_url;
         this.setState({preview_url : preview});
-        console.log('el3b');
-        console.log(this.state.preview_url);
-        this.setState({img:this.state.topTracks[i].img});
+        this.setState({img:this.state.topTracks[i].img.url});
         this.setState({songName:this.state.topTracks[i].name});
-        this.setState({selectedItem: i});
+        this.setState({selectedItem: i});        
     }
-
 
     componentDidMount() {
         this.getTopTracks();
         this.getAlbums();
         this.getArtistDetails();
     }
-
 
     getArtistDetails() {
         // https://api.spotify.com/v1/artists/{id}

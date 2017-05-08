@@ -7,6 +7,7 @@ import Player from './player.js';
 import ListItem from './ListItem';
 
 const API_URL = 'https://api.spotify.com/v1/albums/';
+import ListItem from './ListItem.js';
 
 var imgAr = [];
 var itemsName = [];
@@ -41,9 +42,8 @@ export default class SingleAlbum extends React.Component {
         console.log('el3b');
         this.setState({selectedItem:i});
         // this.setState({:items[i].songName});
-
-
-
+        // this.setState({img:this.state.topTracks[i].img});
+        // this.setState({:items[i].songName})
     }
 
 	componentWillMount(){
@@ -88,6 +88,7 @@ export default class SingleAlbum extends React.Component {
                                   var is_selected = this.state.selectedItem == i;
                                   return(
                                     <ListItem keyNum= {i} key={i} onClick={this.anaDost.bind(this,i)} isSelected = {is_selected} trackName={track.name} 
+
                                     duration={track.duration_ms}>
                                     </ListItem>
                                     );

@@ -111,11 +111,9 @@ export default class Player extends Component {
             <div>
                 <img className="player__bar__img" src = {""+this.props.img}/>
             </div>
-            <div>
-                <h6>{this.props.songName}</h6>
-            </div>
-            <div>
-                <h6>{this.props.artistName}</h6>
+            <div className="bar__text">
+                <h6 className="bar-name">{this.props.songName}</h6>
+                <h6 className="bar-artist">{this.props.artistName}</h6>
             </div>
         </div>
 
@@ -130,7 +128,7 @@ export default class Player extends Component {
                         <i className="fa fa-pause fa-2x" aria-hidden="true" onClick={() => this.playPause()}></i>
                 }
             </a>
-            <input className=""
+            <input className="bar__seeker"
               type='range' min={0} max={1} step='any'
               value={played}
               onMouseDown={this.onSeekMouseDown}

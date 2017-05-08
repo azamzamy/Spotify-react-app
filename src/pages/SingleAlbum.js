@@ -21,11 +21,13 @@ export default class SingleAlbum extends React.Component {
 		this.state = {
 			followers:"",
 			tracks:[],
+			items:[],
 			artist:"",
 			album_name:"",
 			img:"",
 			preview_url: "",
 			showBar:false,
+			songName:'',
 			selectedItem: -2
 		}
 	}
@@ -33,21 +35,20 @@ export default class SingleAlbum extends React.Component {
 	startPlayer(){
 		this.setState({showBar:true});
 	}
-	
-    anaDost(i){
 
-        var preview  = items[i].url;
-        this.setState({preview_url : preview});
+    anaDost(i){
+        this.setState({preview_url : this.state.tracks[i].preview_url});
         console.log('el3b');
         this.setState({selectedItem:i});
-        // this.setState({:items[i].songName});
-
-
-
+		this.setState({songName:this.state.tracks[i].name});
+		console.log("===============");
+		console.log(this.state.songName);
+		console.log("===============");
     }
 
 	componentWillMount(){
 
+		let items = [];
 		let keyword = this.props.params.albumID;
 		let apiRequest = API_URL + this.props.params.albumID;
 		axios.get(apiRequest, {params: []}).then(response => {
@@ -55,14 +56,17 @@ export default class SingleAlbum extends React.Component {
 			this.setState({artist: response.data.artists[0]});
 			this.setState({album_name: response.data.name});
 			this.setState({img: response.data.images[1].url});
-
 			for (var i = 0; i < response.data.tracks.items.length; i++) {
 					this.setState({preview_url:response.data.tracks.items[i].preview_url});
-					items.push({url:response.data.tracks.items[i].preview_url});
+					items.push({
+						url:response.data.tracks.items[i].preview_url,
+						songName:response.data.tracks.items[i].name
+					});
+					this.setState({items : items});
 			}
-
-			console.log(this.state.preview_url);
-
+			console.log("=======================");
+			console.log(this.state.artist);
+			console.log("=======================");
 		});
 
 
@@ -87,7 +91,7 @@ export default class SingleAlbum extends React.Component {
                                 {this.state.tracks.map(function(track,i) {
                                   var is_selected = this.state.selectedItem == i;
                                   return(
-                                    <ListItem keyNum= {i} key={i} onClick={this.anaDost.bind(this,i)} isSelected = {is_selected} trackName={track.name} 
+                                    <ListItem keyNum= {i} key={i} onClick={this.anaDost.bind(this,i)} isSelected = {is_selected} trackName={track.name}
                                     duration={track.duration_ms}>
                                     </ListItem>
                                     );
@@ -100,7 +104,7 @@ export default class SingleAlbum extends React.Component {
 				</div>
 
 				{this.state.showBar ? (
-			       <Player preview_url={this.state.preview_url} />
+			       <Player preview_url={this.state.preview_url} artistName = {this.state.artist.name} img={this.state.img} songName={this.state.songName}/>
 			      ) : (
 			       ''
 			    )}

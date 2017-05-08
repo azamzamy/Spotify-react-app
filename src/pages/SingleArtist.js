@@ -41,12 +41,11 @@ export default class SingleArtist extends React.Component {
     this.setState({showBar:true});
   }
     anaDost(i){
-        console.log('dost = ' );
+        console.log('Chose a track....');
+        this.setState()
         console.log(this.state.topTracks[i].preview_url);
         var preview  = this.state.topTracks[i].preview_url;
         this.setState({preview_url : preview});
-        console.log('el3b');
-        console.log(this.state.preview_url);
         this.setState({img:this.state.topTracks[i].img});
         this.setState({songName:this.state.topTracks[i].name});
         this.setState({selectedItem: i});
@@ -119,6 +118,7 @@ export default class SingleArtist extends React.Component {
   }
 
   render() {
+
         if(this.props.art != null){
           var artists = this.props.art;
           var name = this.props.name;
@@ -148,7 +148,7 @@ export default class SingleArtist extends React.Component {
                                 {this.state.topTracks.map(function(track,i) {
                                   var is_selected = this.state.selectedItem == i;
                                   return(
-                                    <ListItem keyNum= {i} key={i} onClick={this.anaDost.bind(this,i)} isSelected = {is_selected} trackName={track.name} 
+                                    <ListItem keyNum= {i} key={i} onClick={this.anaDost.bind(this,i)} isSelected = {is_selected} trackName={track.name}
                                     duration={track.duration_ms}>
                                     </ListItem>
                                     );
@@ -172,7 +172,8 @@ export default class SingleArtist extends React.Component {
                     )}
                 </ul>
                 {this.state.showBar ? (
-                   <Player preview_url={this.state.preview_url}  artistName = {this.state.artistName} img={this.state.img} songName={this.state.songName}/>
+                   <Player preview_url={this.state.preview_url}  artistName = {this.state.artistName} img={this.state.img} songName={this.state.songName}
+                   />
                   ) : (
                    ''
                 )}

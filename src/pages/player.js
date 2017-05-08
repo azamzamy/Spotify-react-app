@@ -17,8 +17,8 @@ export default class Player extends Component {
          console.log("got a player working");
          this.state = {
              preview_url:'',
-           url: null,
-           playing: false,
+           url: this.props.preview_url,
+           playing: true,
            volume: 0.8,
            played: 0,
            loaded: 0,
@@ -27,9 +27,16 @@ export default class Player extends Component {
            artistName : "",
            img : "",
            songName:""
-
          }
     }
+
+
+    componentWillUpdate(nextProps, nextState){
+        if(nextProps.preview_url !== nextState.url){
+            this.setState({playing:false});
+        }
+    }
+
 
   load = url => {
     this.setState({
@@ -38,8 +45,6 @@ export default class Player extends Component {
       loaded: 0
     })
     this.setState({url:this.props.preview_url})
-    // this.setState({url:this.props.preview_url})
-
   }
 
   playPause = () => {
